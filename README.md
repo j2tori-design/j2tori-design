@@ -1,11 +1,11 @@
 # 안녕하세요, 전건우입니다 👋
 
-### 검증 설계부터 운영 제안까지, 실제 운영에서도 유지되는 숫자를 만드는 데이터 사이언티스트
+### 데이터가 만들어지는 단위부터 확인하고, 같은 입력에서 같은 결과가 나오는지 검증하는 개발자
 
-홍익대학교 컴퓨터공학과 3학년 · **Data Scientist / Data Engineer** 지향 · 2026.12부터 풀타임 근무 가능
+홍익대학교 컴퓨터공학과 3학년 · **Backend Engineer** 지향 · 2026.12부터 풀타임 근무 가능
 
-> I'm a CS student who builds data pipelines and ML models, and checks whether the numbers still hold in real operation —
-> by catching leakage, designing time- and group-aware validation, and turning model scores into operating decisions.
+> I'm a CS student aiming to be a backend engineer. I build reproducible data pipelines in Python and SQL,
+> and I check that results hold under the same inputs — by defining the unit of a record first, catching leakage, and testing against simple baselines.
 
 📫 j2tori@gmail.com
 
@@ -15,8 +15,9 @@
 
 | 역량 | 증거 |
 |---|---|
-| **검증 설계 · 데이터 누수 진단** | 행 단위 검증의 성능 과대평가를 사출 그룹 CV로 바로잡음 (PR-AUC 0.18 → 0.12, [KAMP](https://github.com/j2tori-design/kamp-injection-defect-prediction)) · 무작위 평가가 운영 성능을 약 2배 부풀리고 그 원인이 평가 기간임을 실증 ([단독 논문](https://github.com/j2tori-design/shelter-euthanasia-evaluation)) |
-| **대용량 데이터 결합 · 재현 가능한 파이프라인** | 카드 매출 약 285만 행 + 유동인구·기상·지하철 데이터를 지역×업종×일 패널로 결합하고, 수집부터 발표 수치까지 15개 스크립트로 재현 ([빅콘테스트](https://github.com/j2tori-design/bigcontest-2026-rain-damage)) |
+| **CS 기초 · 알고리즘** | 컴퓨터공학 전공 (자료구조 및 알고리즘·컴퓨터네트워크·컴퓨터구조 이수, 운영체제·데이터베이스시스템 수강 중) · Python 알고리즘 풀이 ([Algorithm](https://github.com/j2tori-design/Algorithm)) · SQLD |
+| **대용량 데이터 처리 · 재현 가능한 파이프라인** | 카드 매출 약 285만 행 + 유동인구·기상·지하철 데이터를 지역×업종×일 패널로 결합하고, 수집부터 발표 수치까지 15개 스크립트로 재현 ([빅콘테스트](https://github.com/j2tori-design/bigcontest-2026-rain-damage)) · 같은 명령을 반복 실행해 예측 파일이 바이트 단위로 일치함을 확인 ([KISTI](https://github.com/j2tori-design/kowas-wastewater-early-warning)) |
+| **검증 설계 · 오류 진단** | 행 단위 검증의 성능 과대평가를 사출 그룹 CV로 바로잡음 (PR-AUC 0.18 → 0.12, [KAMP](https://github.com/j2tori-design/kamp-injection-defect-prediction)) · 무작위 평가가 운영 성능을 약 2배 부풀리고 그 원인이 평가 기간임을 실증 ([단독 논문](https://github.com/j2tori-design/shelter-euthanasia-evaluation)) |
 | **분석 결과를 운영 의사결정으로** | 위험점수 상위 20% 검사로 CN7 불량 12/13건 포착 (KAMP) · 입소 동물 32.4% 검토로 안락사 78.2% 탐지 (논문) · 호우 지수형 손실보전 지급액-실손 상관 0.74 (빅콘테스트) |
 
 ---
