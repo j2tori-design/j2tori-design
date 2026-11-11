@@ -151,3 +151,7 @@ flowchart LR
 | 📜 **자격** | ADsP (데이터분석 준전문가) · SQLD (SQL 개발자) — 한국데이터산업진흥원, 2026.09 |
 | 🧠 **MATRIX** 홍익대 인공지능 학회 (2025.09 – 2026.08) | DA/ML 스터디, 컨퍼런스 팀 조장 2회, 26-2 최우수상 |
 | 📊 **BDAI** 인공지능 학회 (2026.03 – 현재) | Python·SQL 기본·심화 과정 |
+
+---
+
+📂 프로젝트 저장소를 한 페이지로 모아 본 목차는 [contest-portfolio](https://github.com/j2tori-design/contest-portfolio)에 있습니다.
