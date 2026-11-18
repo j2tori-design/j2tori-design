@@ -6,6 +6,7 @@
 
 > I'm a CS student aiming to be a backend engineer. I build reproducible data pipelines in Python and SQL,
 > and I check that results hold under the same inputs — by defining the unit of a record first, catching leakage, and testing against simple baselines.
+> Recently I turned one of my analyses into a Kotlin / Spring WebFlux / MongoDB / GraphQL API with an idempotent write path tested under concurrent requests.
 
 📫 j2tori@gmail.com
 
@@ -15,6 +16,7 @@
 
 | 역량 | 증거 |
 |---|---|
+| **백엔드 API · 동시성** | Kotlin · Spring WebFlux · MongoDB · GraphQL API — 같은 요청 10개를 동시에 보내도 1건만 저장되는 멱등 쓰기 API, `$inc` 원자적 카운터, 커서 페이지네이션, Docker · Kubernetes(kind) 배포까지 CI로 확인 ([school-access-api](https://github.com/j2tori-design/school-access-api)) |
 | **CS 기초 · 알고리즘** | 컴퓨터공학 전공 (자료구조 및 알고리즘·컴퓨터네트워크·컴퓨터구조 이수, 운영체제·데이터베이스시스템 수강 중) · Python 알고리즘 풀이 ([Algorithm](https://github.com/j2tori-design/Algorithm)) · SQLD |
 | **대용량 데이터 처리 · 재현 가능한 파이프라인** | 카드 매출 약 285만 행 + 유동인구·기상·지하철 데이터를 지역×업종×일 패널로 결합하고, 수집부터 발표 수치까지 15개 스크립트로 재현 ([빅콘테스트](https://github.com/j2tori-design/bigcontest-2026-rain-damage)) · 같은 명령을 반복 실행해 예측 파일이 바이트 단위로 일치함을 확인 ([KISTI](https://github.com/j2tori-design/kowas-wastewater-early-warning)) |
 | **검증 설계 · 오류 진단** | 행 단위 검증의 성능 과대평가를 사출 그룹 CV로 바로잡음 (PR-AUC 0.18 → 0.12, [KAMP](https://github.com/j2tori-design/kamp-injection-defect-prediction)) · 무작위 평가가 운영 성능을 약 2배 부풀리고 그 원인이 평가 기간임을 실증 ([단독 논문](https://github.com/j2tori-design/shelter-euthanasia-evaluation)) |
@@ -23,6 +25,19 @@
 ---
 
 ## 대표 프로젝트
+
+### 🛠 백엔드
+
+#### [school-access-api — 서울 학교 장애인 편의시설 GraphQL API](https://github.com/j2tori-design/school-access-api)
+**개인 · 2026.11** · 데이터시각화 팀 프로젝트의 분석 결과를 다른 서비스가 쓸 수 있는 API로 옮김
+
+- 분석 노트북 수치(평균 82.0%, 완비 37.4%, 휠체어 경로 57%, 우선 점검 후보 253곳)를 **통합 테스트 기대값**으로 넣어 API가 같은 답을 내는지 검증
+- 현장 제보 쓰기 API: `clientRequestId` + 유니크 인덱스로 **멱등성** 보장 — "조회 후 저장" 방식이 동시 요청에서 깨지는 것을 테스트로 재현하고 DB 제약으로 해결
+- `@BatchMapping`으로 GraphQL N+1 제거, MongoDB 집계 파이프라인·`$nearSphere` 위치 검색, 커서 페이지네이션(Relay Connection)
+- 계층 분리 Docker 이미지, Kubernetes 매니페스트(프로브·HPA), **GitHub Actions: 테스트 → 이미지 빌드 → kind 배포 → GraphQL 응답 확인**
+- `Kotlin` `Spring WebFlux` `Spring for GraphQL` `MongoDB` `Docker` `Kubernetes` `GitHub Actions`
+
+### 📊 데이터 분석 · ML
 
 <table>
 <tr>
@@ -114,9 +129,18 @@ flowchart LR
 ## 기술 스택
 
 **Language** &nbsp;
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
 ![C++](https://img.shields.io/badge/C%2FC++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
+
+**Backend** &nbsp;
+![Spring WebFlux](https://img.shields.io/badge/Spring_WebFlux-6DB33F?style=flat-square&logo=spring&logoColor=white)
+![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=graphql&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 
 **Data / ML** &nbsp;
 ![pandas](https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white)
@@ -140,7 +164,7 @@ flowchart LR
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=flat-square&logo=anthropic&logoColor=white)
 
-**학습 중** &nbsp; PyTorch · Docker · AWS / GCP 기초
+**학습 중** &nbsp; AWS(EKS · ECR) · Terraform · PyTorch
 
 ---
 
